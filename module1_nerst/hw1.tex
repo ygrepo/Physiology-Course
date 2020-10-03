@@ -1,0 +1,132 @@
+\documentclass[12pt,twoside]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz,graphicx,amsmath,amsfonts,amscd,amssymb,bm,cite,epsfig,epsf,url}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
+\usepackage{amsthm,multirow,wasysym,appendix}
+\usepackage{array,subcaption} 
+% \usepackage[small,bf]{caption}
+\usepackage{bbm}
+\usepackage{pgfplots}
+\usetikzlibrary{spy}
+\usepgfplotslibrary{external}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{arrows,automata}
+\usepackage{thmtools}
+\usepackage{blkarray} 
+\usepackage{textcomp}
+\usepackage[left=0.8in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+
+\usepackage{times}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{color}
+\usepackage{graphics}
+\usepackage{enumerate}
+\usepackage{amstext}
+\usepackage{blkarray}
+\usepackage{url}
+\usepackage{epsfig}
+\usepackage{bm}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+\usepackage{textcomp}
+\usepackage[left=0.8in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+\usepackage{mathtools}
+\usepackage{minted}
+
+\input{macros}
+%\input{Symbols}
+
+\begin{document}
+$$
+	E_{\text{ion}} = \frac{61.56}{Z} \cdot \log_{10} \bigg( \frac{C_{\text{out}}} {C_{\text{in}}} \bigg)
+$$
+where 
+\begin{enumerate}[] 
+\item $E_{\text{ion}} =$ equilibrium potential or Ernst potential for a particular ion, in mV
+\item $C_{\text{in}} =$ intracellular concentration of the ion, in mM/L
+\item $C_{\text{out}} =$ extracellular concentration of the ion, in mM/L
+\item $Z$ = the valence of the ion
+\end{enumerate}
+ Using the concentration gradients from the table in the question, the Nersnt potentials for Na$^+$, K$^+$ and Cl$^-$  are:
+ \begin{align*}
+ 	E_{\text{Na}^+}	&= \frac{61.56}{+1} \log_{10} \bigg( \frac{127} {10} \bigg) \approx 68 \text{mV} \\
+ 	E_{\text{K}^+}	&= \frac{61.56}{+1} \log_{10} \bigg( \frac{4} {120} \bigg) \approx -90 \text{mV} \\
+ 	E_{\text{Cl}^-}	&= \frac{61.56}{-1} \log_{10} \bigg( \frac{80} {2} \bigg) \approx -98 \text{mV} \\
+ \end{align*}
+% The Cl$^-$ concentration is reversed because Cl$^-$ is an anion and its movement has the opposite effect on the membrane potential.
+
+First knowing that the plasma membrane behaves electrically like a capacitor of capacitance C$_\text{a}$ F/m$^2$, the charge separation across the
+membrane is:
+ \begin{align*}
+ 	Q &= C_\text{a} \cdot (2 \pi R^2 + 2 \pi R L) \cdot V_{\text{m}}\\
+	    &= C_\text{a} \cdot 2 \pi R (R + L)  \cdot V_{\text{m}}
+ \end{align*}
+ 
+ The amount of electricity that is carried by 1 mole of electrons is given by Faraday's constant: F (96,480 coulombs/mole).
+ The amount of ion X moved to establish $V_{\text{m}}$ is: 
+ \begin{align*}
+ X_{i \rightarrow o} 	&= \frac{Q}{F} \\
+ 				&= \frac{C_\text{a} \cdot 2 \pi R (R + L)  \cdot V_{\text{m}}} {F}
+ \end{align*}
+ With a cylindrical cell of volume $\pi R^2 L$, the initial amount of ion X with an intracellular concentration of $[X]_{i}$ is:
+ $$X_{\text{i}} = \pi R^2 L [X]_{i}$$
+ Thus the ratio of the amount (in mol) of ion X moved to establish $V_{\text{m}}$ to the initial amount of ion X is:
+ $$\frac{X_{i \rightarrow o} } {X_{\text{i}}} = 2 \cdot \frac{C_\text{a}} {F} \frac{R+L} {R \cdot L} \frac{V_{\text{m}}} {[X]_{i}}$$
+ 
+ %  P_{\text{Na}} \cdot [Na]_o + P_K [K]_o + P_{\text{Cl}} [Cl]_i
+ GHK equation: 
+ $$
+ 	V_{\text{GHK, Na, K, Cl}} = \frac{R \cdot T} {F} \cdot \ln \bigg( \frac{P_{\text{Na}} \cdot [\text{Na}]_o  + P_K [K]_o + P_{\text{Cl}} [Cl]_i} 
+	{P_{\text{Na}} \cdot [\text{Na}]_i  + P_K [K]_i + P_{\text{Cl}} [Cl]_o} \bigg)
+ $$
+ 
+ $$
+ 	V_{\cl}	= -  \frac{R \cdot T} {F} \cdot \ln \bigg(   \frac{ [\cl]_o} {[\cl]_i}  \bigg)
+ $$
+ \begin{align*}
+ 	E_m	&= \frac{g_{\text{Na}^+}} {g_{\text{Na}^+} + g_{\text{K}^+}} E_{\text{Na}^+} +  \frac{g_{\text{K}^+}} {g_{\text{Na}^+} + g_{\text{K}^+}} E_{\text{K}^+} \\
+	\text{let } r &=  \frac{g_{\text{Na}^+}} {g_{\text{K}^+}} \\
+	E_m	&= \frac{r} {1+r} E_{\text{Na}^+} + \frac{1}{1+r} E_{\text{K}^+} \\
+	& \text{multiplying on both sides by} (1+r) \\
+	(1+r) E_m	&=   r E_{\text{Na}^+} + E_{\text{K}^+} \\
+	r &= \frac{ E_{\text{K}^+}  -  E_m} {  E_m - E_{\text{Na}^+} }
+ \end{align*}
+Using the concentrations of Na$^+$ and K$^+$ and their computed Nernst potentials as given in slide 8 of video 7, the ratio is:
+\begin{align*}
+	r &= \frac{g_{\text{Na}^+}} {g_{\text{K}^+}}\\
+	  &= \frac{ E_{\text{K}^+}  -  E_m} {  E_m - E_{\text{Na}^+} } \\
+	  &= \frac{-94 - (-86)} {-86-61} \\
+	  &= \frac{8}{147} \\
+	  &= 0.054 ~ \text{or } 5.4\%
+ \end{align*}
+
+ 
+ Given:
+ $$
+ 	\frac{X^2} {(U-X) (T-X)} = \frac{A^2} { (U-A) (R-A)}
+ $$
+ Let $\frac{1}{\alpha} =  \frac{A^2} { (U-A) (R-A)}$ then 
+ \begin{align*}
+ 	\alpha X^2 	&=	(U-X) (T-X) \\
+	(1-\alpha) X^2 - (U+T) X + UT &= 0 \\
+  \end{align*}
+  
+Solving the quadratic assuming validity of the discriminant for real values:
+$$
+	X_{0,1} = \frac { U + T \pm \sqrt{ (U - T) ^2 + 4 \alpha U T}} {2 ( 1 - \alpha)}
+$$
+
+If we set $c = \frac{1}{\alpha}$ we obtain the reach curve white paper solution:
+$$
+	X_{0,1} = \frac { c (U + T) \pm \sqrt{c}  \sqrt{ c (T - U) ^2 + 4 U T}} {2 ( -1 + c)}
+$$
+
+\end{document}
