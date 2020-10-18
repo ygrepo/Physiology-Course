@@ -4,6 +4,7 @@ logs
 *.png
 *.cfl
 *.hdr
+books/**
 
 data/**
 .DS_Store
