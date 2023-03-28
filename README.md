@@ -12,5 +12,5 @@
 10. Integration of the Heart and Circulatory System
 11. Respiratory Mechanics
 12. Ventilation Perfusion
-13. Respiratoyr Gas Transport
+13. Respirator Gas Transport
 14. Control Respiratory System
